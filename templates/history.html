@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>История прокатов</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="container">
+    <h1>История прокатов</h1>
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>Клиент</th>
+            <th>Марка</th>
+            <th>Модель</th>
+            <th>Начальный пункт</th>
+            <th>Конечный пункт</th>
+            <th>Начало аренды</th>
+            <th>Окончание аренды</th>
+        </tr>
+        {% for rent in rentals %}
+        <tr>
+            <td>{{ rent.id_rent }}</td>
+            <td>{{ rent.client_name }}</td>
+            <td>{{ rent.brand }}</td>
+            <td>{{ rent.model }}</td>
+            <td>{{ rent.start_point }}</td>
+            <td>{{ rent.end_point or "В прокате"}}</td>
+            <td>{{ rent.rental_start }}</td>
+            <td>{{ rent.rental_end or "В прокате" }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

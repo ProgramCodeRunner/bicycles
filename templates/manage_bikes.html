@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Управление велосипедами</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="container">
+    <h1 class="mt-4">Управление велосипедами</h1>
+
+    <h3>Добавить велосипед</h3>
+    <form action="{{ url_for('add_bike') }}" method="post">
+        <input type="text" name="brand" placeholder="Бренд" required>
+        <input type="text" name="model" placeholder="Модель" required>
+        <input type="text" name="status" placeholder="Статус" required>
+        <input type="number" name="rental_point" placeholder="ID пункта" required>
+        <button type="submit" class="btn btn-success">Добавить</button>
+    </form>
+
+    <h3 class="mt-4">Список велосипедов</h3>
+    <table class="table table-striped">
+        <tr>
+            <th>ID</th>
+            <th>Бренд</th>
+            <th>Модель</th>
+            <th>Статус</th>
+            <th>Пункт проката</th>
+        </tr>
+        {% for bike in bikes %}
+        <tr>
+            <td>{{ bike.id_bicycle }}</td>
+            <td>{{ bike.brand }}</td>
+            <td>{{ bike.model }}</td>
+            <td>{{ bike.status }}</td>
+            <td>{{ bike.rental_point_id_rental_point }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
